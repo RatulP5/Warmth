@@ -1,0 +1,20 @@
+{
+  "report_generated_at": "2026-09-05T13:11:28.517567+00:00",
+  "datasets_audited": [
+    {
+      "dataset": "weather",
+      "total_rows": 11040,
+      "anomalies_detected": 0,
+      "missing_summary": {},
+      "issues": [],
+      "passed": true
+    },
+    {
+      "dataset": "health",
+      "total_rows": 460,
+      "issues": [],
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}

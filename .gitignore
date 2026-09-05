@@ -2,7 +2,8 @@
 __pycache__/
 *.py[codz]
 *$py.class
-
+AGENTS.MD
+AGENT_PROMPTS.MD
 # C extensions
 *.so
 
