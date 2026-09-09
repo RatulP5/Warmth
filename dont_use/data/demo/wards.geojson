@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "wards",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "ward_id": "KOL-DD", "ward_name": "Dum Dum", "city": "Kolkata", "lat": 22.642, "lon": 88.4312, "area_m2": 10241948.934695905 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 88.4162, 22.627 ], [ 88.4462, 22.627 ], [ 88.4462, 22.657 ], [ 88.4162, 22.657 ], [ 88.4162, 22.627 ] ] ] } },
+{ "type": "Feature", "properties": { "ward_id": "KOL-SL", "ward_name": "Salt Lake Sector V", "city": "Kolkata", "lat": 22.58, "lon": 88.437, "area_m2": 10246509.835698923 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 88.422, 22.565 ], [ 88.452, 22.565 ], [ 88.452, 22.595 ], [ 88.422, 22.595 ], [ 88.422, 22.565 ] ] ] } },
+{ "type": "Feature", "properties": { "ward_id": "KOL-BB", "ward_name": "Burrabazar Commercial", "city": "Kolkata", "lat": 22.585, "lon": 88.355, "area_m2": 10245533.324807949 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 88.34, 22.57 ], [ 88.37, 22.57 ], [ 88.37, 22.6 ], [ 88.34, 22.6 ], [ 88.34, 22.57 ] ] ] } },
+{ "type": "Feature", "properties": { "ward_id": "KOL-BH", "ward_name": "Behala South", "city": "Kolkata", "lat": 22.4988, "lon": 88.3186, "area_m2": 10251532.155056076 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 88.3036, 22.4838 ], [ 88.3336, 22.4838 ], [ 88.3336, 22.5138 ], [ 88.3036, 22.5138 ], [ 88.3036, 22.4838 ] ] ] } },
+{ "type": "Feature", "properties": { "ward_id": "KOL-GH", "ward_name": "Gariahat Urban", "city": "Kolkata", "lat": 22.5195, "lon": 88.3653, "area_m2": 10250367.055129584 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 88.3503, 22.5045 ], [ 88.3803, 22.5045 ], [ 88.3803, 22.5345 ], [ 88.3503, 22.5345 ], [ 88.3503, 22.5045 ] ] ] } }
+]
+}

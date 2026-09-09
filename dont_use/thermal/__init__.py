@@ -1,0 +1,1 @@
+"""Thermal stress calculation engine."""

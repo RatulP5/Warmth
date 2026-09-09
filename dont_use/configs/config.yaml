@@ -1,0 +1,84 @@
+# Unified Heatwave AI Configuration
+
+city:
+  name: "Kolkata"
+  country: "India"
+  default_crs: "EPSG:4326"
+  projected_crs: "EPSG:32645"
+
+paths:
+  raw:
+    weather: "data/raw/weather"
+    satellite: "data/raw/satellite"
+    osm: "data/raw/osm"
+    census: "data/raw/census"
+    health: "data/raw/health"
+    wards: "data/raw/wards"
+  interim: "data/interim"
+  processed: "data/processed"
+  features: "data/features"
+  predictions: "data/predictions"
+  demo: "data/demo"
+  artifacts: "data/models/artifacts"
+  reports: "data/reports"
+
+weather:
+  source: "Open-Meteo"
+  forecast_url: "https://api.open-meteo.com/v1/forecast"
+  archive_url: "https://archive-api.open-meteo.com/v1/archive"
+  timeout_sec: 25
+  variables:
+    - "temperature_2m"
+    - "relative_humidity_2m"
+    - "wind_speed_10m"
+    - "direct_normal_irradiance"
+    - "surface_pressure"
+    - "precipitation"
+
+osm:
+  overpass_url: "https://overpass-api.de/api/interpreter"
+  timeout_sec: 25
+  feature_radius_meters: 1000
+
+thermal:
+  wbgt:
+    categories:
+      normal: { min: -50.0, max: 27.9, label: "Normal / Low" }
+      caution: { min: 28.0, max: 29.9, label: "Caution" }
+      high: { min: 30.0, max: 31.9, label: "High Risk" }
+      severe: { min: 32.0, max: 33.9, label: "Severe Risk" }
+      extreme: { min: 34.0, max: 60.0, label: "Extreme Hazard" }
+  heat_index:
+    categories:
+      normal: { min: -50.0, max: 26.9, label: "Normal" }
+      caution: { min: 27.0, max: 31.9, label: "Caution" }
+      extreme_caution: { min: 32.0, max: 39.9, label: "Extreme Caution" }
+      danger: { min: 40.0, max: 51.9, label: "Danger" }
+      extreme_danger: { min: 52.0, max: 100.0, label: "Extreme Danger" }
+  nocturnal_recovery:
+    critical_temp_c: 28.0
+    night_hours: [22, 23, 0, 1, 2, 3, 4, 5]
+
+features:
+  weather_lags: [1, 6, 12, 24]
+  rolling_windows: [3, 7] # days
+  vulnerability_weights:
+    tin_roof_factor: 1.5
+    construction_factor: 2.0
+    building_factor: 0.05
+    cooling_buffer_scale: 10.0
+
+training:
+  random_seed: 42
+  lookback_days: 14
+  forecast_horizon_days: 5
+  validation_ratio: 0.15
+  test_ratio: 0.15
+
+risk:
+  levels:
+    NORMAL: { min_surge_pct: 0.0, max_surge_pct: 9.9, color: "GREEN", action_code: "ROUTINE_MONITORING" }
+    WATCH: { min_surge_pct: 10.0, max_surge_pct: 19.9, color: "YELLOW", action_code: "PUBLIC_HEAT_ADVISORY" }
+    HIGH: { min_surge_pct: 20.0, max_surge_pct: 39.9, color: "ORANGE", action_code: "HEALTH_CENTER_ALERT_HYDRATION_POSTS" }
+    SEVERE: { min_surge_pct: 40.0, max_surge_pct: 59.9, color: "RED", action_code: "OUTDOOR_LABOR_RESTRICTION_MISTING_TANKERS" }
+    EXTREME: { min_surge_pct: 60.0, max_surge_pct: 200.0, color: "DARK_RED", action_code: "CRITICAL_EMERGENCY_FULL_CIVIC_MOBILIZATION" }
