@@ -1,0 +1,254 @@
+.climate-page {
+  padding-top: 25px;
+}
+.map-command-title {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+.map-command-title span,
+.timeline-title span,
+.section-heading p {
+  display: block;
+  color: #da6734;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+.map-command-title h1 {
+  margin: 5px 0 0;
+  font-size: clamp(24px, 3vw, 34px);
+  letter-spacing: -0.04em;
+}
+.map-command-title p {
+  margin: 0 0 3px;
+  color: #6e8186;
+  font-size: 12px;
+}
+.map-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #d6e1e1;
+  border-radius: 9px;
+  background: #dce8e4;
+  box-shadow: 0 8px 28px #203c4314;
+}
+.map-overlay {
+  position: absolute;
+  z-index: 500;
+}
+.overlay-top {
+  top: 12px;
+  left: 12px;
+  max-width: calc(100% - 24px);
+}
+.overlay-bottom {
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: end;
+  gap: 10px;
+}
+.map-instruction {
+  position: absolute;
+  z-index: 500;
+  top: 15px;
+  right: 15px;
+  border: 1px solid #dce4e4;
+  border-radius: 4px;
+  padding: 7px 9px;
+  background: #fffffff0;
+  color: #536a70;
+  font-size: 10px;
+}
+.forecast-timeline,
+.section-card {
+  margin-top: 18px;
+  border: 1px solid #d9e3e2;
+  border-radius: 8px;
+  padding: 19px;
+  background: #fff;
+  box-shadow: 0 2px 8px #1d3c4208;
+}
+.timeline-title {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+.timeline-title b {
+  font-size: 15px;
+}
+.timeline-days {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+.timeline-days button {
+  min-width: 0;
+  border: 1px solid #d9e4e4;
+  border-radius: 6px;
+  padding: 12px;
+  background: #fbfcfc;
+  text-align: left;
+  color: #30494f;
+}
+.timeline-days button:hover,
+.timeline-days button.day-active {
+  border-color: #db6631;
+  background: #fff8f4;
+}
+.timeline-days span,
+.timeline-days strong,
+.timeline-days small {
+  display: block;
+}
+.timeline-days span,
+.timeline-days small {
+  color: #71858b;
+  font-size: 10px;
+}
+.timeline-days strong {
+  margin: 7px 0 4px;
+  font-size: 23px;
+}
+.timeline-days i {
+  display: inline-block;
+  margin-top: 9px;
+  border-radius: 3px;
+  padding: 3px 5px;
+  color: white;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 800;
+}
+.lower-intelligence {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 18px;
+}
+.section-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 14px;
+}
+.section-heading h2 {
+  margin: 4px 0 0;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+.section-heading > span {
+  color: #6c8086;
+  font-size: 10px;
+}
+.factor-list {
+  margin-top: 16px;
+}
+.factor-list > div {
+  display: grid;
+  grid-template-columns: 145px 1fr 28px;
+  gap: 10px;
+  align-items: center;
+  margin: 11px 0;
+  font-size: 11px;
+}
+.factor-list > div > span {
+  color: #60747a;
+}
+.factor-list > div > div {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #e8eeee;
+}
+.factor-list i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #df6a32;
+}
+.factor-list b {
+  font-size: 10px;
+}
+.action-card > p {
+  color: #65797f;
+  font-size: 12px;
+}
+.action-card ul {
+  padding: 0;
+  list-style: none;
+}
+.action-card li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 11px 0;
+  color: #40575e;
+  font-size: 12px;
+}
+.action-card li svg {
+  color: #339a68;
+}
+.secondary-btn {
+  border: 1px solid #bdccce;
+  border-radius: 4px;
+  padding: 9px 11px;
+  background: white;
+  color: #3d565c;
+  font-size: 11px;
+  font-weight: 700;
+}
+.tag {
+  border-radius: 3px;
+  padding: 5px 7px;
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+}
+.tag.extreme {
+  background: #c9423a;
+}
+.tag.high {
+  background: #e76f22;
+}
+.tag.moderate {
+  background: #d99d18;
+}
+.tag.low {
+  background: #2f9e6e;
+}
+@media (max-width: 760px) {
+  .map-command-title {
+    display: block;
+  }
+  .map-command-title p {
+    margin-top: 8px;
+  }
+  .timeline-days {
+    display: flex;
+    overflow-x: auto;
+  }
+  .timeline-days button {
+    min-width: 130px;
+  }
+  .lower-intelligence {
+    grid-template-columns: 1fr;
+  }
+  .forecast-timeline,
+  .section-card {
+    padding: 15px;
+  }
+  .map-instruction {
+    display: none;
+  }
+  .overlay-bottom {
+    right: 8px;
+    bottom: 8px;
+  }
+  .factor-list > div {
+    grid-template-columns: 110px 1fr 22px;
+  }
+}
