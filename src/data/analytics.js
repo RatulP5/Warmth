@@ -1,0 +1,21 @@
+export const analyticsData = Array.from({ length: 12 }, (_, i) => ({
+  month: [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ][i],
+  temperature: 25 + [0, 2, 5, 10, 14, 12, 8, 7, 6, 4, 1, 0][i],
+  wbgt: 21 + [0, 1, 4, 8, 11, 10, 7, 6, 5, 3, 1, 0][i],
+  utci: 27 + [0, 2, 6, 11, 16, 14, 9, 8, 7, 4, 1, 0][i],
+  mortality: 10 + [0, 1, 4, 17, 48, 34, 12, 9, 7, 3, 0, 0][i],
+  hospitalization: 13 + [1, 2, 8, 21, 52, 40, 18, 13, 9, 4, 1, 0][i],
+}));
