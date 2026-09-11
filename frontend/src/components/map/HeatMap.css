@@ -5,7 +5,7 @@
   padding: 6px;
   border: 1px solid var(--border-card);
   border-radius: 10px;
-  background: rgba(12, 15, 20, 0.85);
+  background: var(--surface-overlay);
   backdrop-filter: blur(16px);
 }
 
@@ -35,18 +35,18 @@
 .kolkata-leaflet-map {
   width: 100%;
   height: 520px;
-  background: #080a0c !important;
+  background: var(--map-background) !important;
 }
 
 /* Dark Map Tiles Overlay Filter */
 .leaflet-tile-pane {
-  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3);
+  filter: var(--map-filter);
 }
 
 .ward-tooltip {
   border: 1px solid var(--border-card) !important;
   border-radius: 8px !important;
-  background: rgba(12, 15, 20, 0.9) !important;
+  background: var(--surface-strong) !important;
   backdrop-filter: blur(12px) !important;
   color: var(--text-primary) !important;
   box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
@@ -63,7 +63,7 @@
   padding: 6px 10px;
   border: 1px solid var(--border-card);
   border-radius: 6px;
-  background: rgba(12, 15, 20, 0.85);
+  background: var(--surface-overlay);
   backdrop-filter: blur(12px);
   color: var(--text-muted);
   font-size: 10px;
@@ -80,7 +80,7 @@
   border: 1px solid var(--border-card);
   border-radius: 10px;
   padding: 8px 12px;
-  background: rgba(12, 15, 20, 0.85);
+  background: var(--surface-overlay);
   backdrop-filter: blur(16px);
   color: var(--text-muted);
   font-size: 10px;
@@ -98,7 +98,7 @@
   overflow: hidden;
   border: 1px solid var(--border-card);
   border-radius: 10px;
-  background: rgba(12, 15, 20, 0.85);
+  background: var(--surface-overlay);
   backdrop-filter: blur(16px);
 }
 
@@ -115,7 +115,7 @@
 
 .risk-summary b {
   font-size: 14px;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .risk-summary span {

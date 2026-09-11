@@ -39,7 +39,7 @@
 
 .command-context b {
   margin-top: 3px;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 16px;
   font-family: var(--font-display);
 }
@@ -58,7 +58,7 @@
   border: 1px solid var(--border-card);
   border-radius: 8px;
   padding: 7px 12px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface-subtle);
   color: var(--text-primary);
   font-size: 12px;
   transition: border-color 0.3s ease;
@@ -67,6 +67,10 @@
 .command-tools button:hover {
   border-color: var(--border-card-hover);
 }
+
+.command-tools .theme-toggle { display: grid; width: 32px; height: 32px; place-items: center; padding: 0; }
+.theme-toggle svg { transition: transform 0.25s ease; }
+.theme-toggle:hover svg { transform: rotate(18deg) scale(1.08); }
 
 .command-tools time {
   color: var(--text-muted);
@@ -83,7 +87,7 @@
   flex: 0 0 68px;
   flex-direction: column;
   border-right: 1px solid var(--border-card);
-  background: rgba(12, 15, 20, 0.95);
+  background: var(--surface-strong);
   backdrop-filter: blur(20px);
   color: var(--text-primary);
   z-index: 1000;
@@ -111,7 +115,7 @@
   place-items: center;
   border-radius: 8px;
   background: var(--accent-orange);
-  color: #fff;
+  color: var(--text-on-accent);
   box-shadow: 0 0 15px var(--accent-glow);
 }
 
@@ -119,7 +123,7 @@
   display: none;
   font-family: var(--font-display);
   font-size: 14px;
-  color: #fff;
+  color: var(--text-primary);
   line-height: 1.1;
 }
 
@@ -156,7 +160,7 @@
 .command-rail nav a:hover,
 .command-rail nav a.rail-active {
   background: rgba(255, 85, 0, 0.12);
-  color: #ffffff;
+  color: var(--text-primary);
   box-shadow: inset 3px 0 var(--accent-orange);
 }
 
@@ -179,7 +183,7 @@
   margin: auto auto 16px;
   border: 1px solid var(--border-card);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--surface-subtle);
   color: var(--text-primary);
 }
 

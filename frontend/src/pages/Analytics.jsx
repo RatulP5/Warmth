@@ -109,7 +109,7 @@ function Chart({ title, lines }) {
       </div>
       <ResponsiveContainer width="100%" height={270}>
         <LineChart data={analyticsData}>
-          <CartesianGrid stroke="#e7ecef" vertical={false} />
+          <CartesianGrid stroke="var(--chart-grid)" vertical={false} />
           <XAxis dataKey="month" />
           <YAxis />
           <Tooltip />

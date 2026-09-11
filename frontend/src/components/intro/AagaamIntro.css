@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500;600;700&family=Noto+Sans+Devanagari:wght@500;600&display=swap");
+
+.aagaam-intro {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  overflow: hidden;
+  place-items: center;
+  isolation: isolate;
+  background: #080a0c;
+  color: #f0f4f8;
+}
+
+.aagaam-intro::before,
+.aagaam-intro::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+}
+
+.aagaam-intro::before {
+  inset: 0;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(255, 132, 63, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 132, 63, 0.08) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(
+    ellipse 58% 50% at 50% 50%,
+    black,
+    transparent 82%
+  );
+}
+
+.aagaam-intro::after {
+  width: min(74vw, 940px);
+  height: min(42vw, 530px);
+  border: 1px solid rgba(255, 119, 48, 0.1);
+  border-radius: 49% 51% 46% 54% / 50% 42% 58% 50%;
+  transform: rotate(-7deg);
+}
+
+.aagaam-intro__atmosphere {
+  position: absolute;
+  z-index: -2;
+  width: 76vw;
+  height: 58vw;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 85, 0, 0.17),
+    rgba(255, 85, 0, 0.045) 37%,
+    transparent 69%
+  );
+  filter: blur(14px);
+  animation: aagaam-heat-drift 9s ease-in-out infinite alternate;
+}
+
+.aagaam-intro__content {
+  width: min(92vw, 800px);
+  padding: 68px 24px 52px;
+  text-align: center;
+  font-size: 1rem;
+}
+.aagaam-intro__origins {
+  min-height: 310px;
+}
+
+.aagaam-intro__word {
+  color: #fff7f1;
+  font-family: "Noto Sans Bengali", var(--font-display);
+  font-size: clamp(5.3rem, 14vw, 9.8rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 0.95;
+}
+
+.aagaam-intro__latin {
+  margin-top: 18px;
+  color: #ff702d;
+  font-weight: 800;
+  letter-spacing: 0.42em;
+}
+.aagaam-intro__meanings {
+  display: grid;
+  gap: 7px;
+  margin-top: 38px;
+}
+.aagaam-intro__meaning {
+  color: #a5b0be;
+  font-size: clamp(0.79rem, 1.5vw, 0.94rem);
+  font-weight: 500;
+  line-height: 1.45;
+}
+.aagaam-intro__meaning--bn {
+  font-family: "Noto Sans Bengali", var(--font-body);
+}
+.aagaam-intro__meaning--hi {
+  font-family: "Noto Sans Devanagari", var(--font-body);
+}
+
+.aagaam-intro__destination {
+  margin-top: -310px;
+}
+.aagaam-intro__statement {
+  color: #fff7f1;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.3vw, 4.15rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+.aagaam-intro__heatshield {
+  margin-top: 34px;
+  color: #ff702d;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+}
+.aagaam-intro__subtitle {
+  margin-top: 9px;
+  color: #9aa7b5;
+  font-size: 14px;
+}
+.aagaam-intro__actions {
+  margin-top: 34px;
+}
+
+.aagaam-intro__enter,
+.aagaam-intro__skip {
+  border: 0;
+  background: transparent;
+  color: #f0f4f8;
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+.aagaam-intro__enter {
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255, 112, 45, 0.65);
+  color: #ff8b58;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease;
+}
+.aagaam-intro__enter span {
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 200ms ease;
+}
+.aagaam-intro__enter:hover {
+  border-color: #ffb08c;
+  color: #ffb08c;
+}
+.aagaam-intro__enter:hover span {
+  transform: translateX(4px);
+}
+.aagaam-intro__skip {
+  position: absolute;
+  top: 24px;
+  right: clamp(20px, 4vw, 52px);
+  padding: 8px;
+  color: #82909e;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  transition: color 200ms ease;
+}
+.aagaam-intro__skip:hover {
+  color: #f0f4f8;
+}
+
+[data-intro-reveal] {
+  visibility: hidden;
+  opacity: 0;
+}
+.aagaam-intro__word,
+.aagaam-intro__latin {
+  transform: translateY(16px);
+}
+.aagaam-intro__meaning {
+  transform: translateX(-10px);
+}
+.aagaam-intro__statement,
+.aagaam-intro__heatshield,
+.aagaam-intro__subtitle,
+.aagaam-intro__actions {
+  transform: translateY(14px);
+}
+
+@keyframes aagaam-heat-drift {
+  from {
+    transform: translate3d(-4%, -3%, 0) scale(0.96);
+  }
+  to {
+    transform: translate3d(5%, 4%, 0) scale(1.07);
+  }
+}
+
+@media (max-width: 560px) {
+  .aagaam-intro__content {
+    padding: 62px 18px 42px;
+  }
+  .aagaam-intro__origins {
+    min-height: 330px;
+  }
+  .aagaam-intro__word {
+    font-size: clamp(4.8rem, 27vw, 7.2rem);
+  }
+  .aagaam-intro__destination {
+    margin-top: -330px;
+  }
+  .aagaam-intro__statement {
+    font-size: clamp(1.85rem, 10.5vw, 3rem);
+  }
+  .aagaam-intro__meanings {
+    margin-top: 31px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aagaam-intro__atmosphere {
+    animation: none;
+  }
+  [data-intro-reveal] {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+  .aagaam-intro__origins {
+    display: none;
+  }
+  .aagaam-intro__destination {
+    margin-top: 0;
+  }
+}

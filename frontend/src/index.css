@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Syne:wght@700;800&display=swap');
 
-:root {
+:root, html.dark {
   /* Color Palette */
   --bg-dark: #080a0c;
   --bg-card: rgba(18, 22, 28, 0.65);
@@ -11,6 +11,15 @@
   --text-muted: #8a99ad;
   --accent-orange: #ff5500;
   --accent-glow: rgba(255, 85, 0, 0.25);
+  --surface-strong: rgba(12, 15, 20, 0.92);
+  --surface-overlay: rgba(18, 22, 28, 0.85);
+  --surface-subtle: rgba(255, 255, 255, 0.03);
+  --surface-muted: rgba(255, 255, 255, 0.08);
+  --text-on-accent: #ffffff;
+  --shadow-card: rgba(0, 0, 0, 0.35);
+  --map-background: #080a0c;
+  --map-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3);
+  --chart-grid: rgba(255, 255, 255, 0.12);
 
   /* Typography */
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -23,6 +32,26 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html.light {
+  --bg-dark: #f3f0e9;
+  --bg-card: rgba(255, 253, 248, 0.88);
+  --border-card: #d8d1c5;
+  --border-card-hover: rgba(218, 82, 12, 0.58);
+  --text-primary: #17242b;
+  --text-muted: #5e6d72;
+  --accent-orange: #d9570b;
+  --accent-glow: rgba(217, 87, 11, 0.18);
+  --surface-strong: rgba(255, 253, 248, 0.96);
+  --surface-overlay: rgba(255, 253, 248, 0.91);
+  --surface-subtle: rgba(23, 36, 43, 0.035);
+  --surface-muted: rgba(23, 36, 43, 0.08);
+  --text-on-accent: #ffffff;
+  --shadow-card: rgba(50, 42, 30, 0.12);
+  --map-background: #dce4df;
+  --map-filter: saturate(0.65) contrast(1.04) brightness(1.04);
+  --chart-grid: #d5d0c6;
 }
 
 * {
@@ -44,6 +73,13 @@ body {
   color: var(--text-primary);
   overflow-x: hidden;
   position: relative;
+}
+
+html, body, #root, .ops-shell, .command-rail, .command-bar, .section-card, .forecast-timeline,
+.timeline-days button, .secondary-btn, .ward-drawer, .layer-selector, .map-legend, .risk-summary,
+.boundary-attribution, .analytics-filter select, .filter-row button, .alerts-page .alert-card,
+.intelligence-top, .metric-block, .asset-grid > div, .empty-state {
+  transition: background-color 240ms ease, color 240ms ease, border-color 240ms ease;
 }
 
 /* Subtle Grain Overlay for Editorial Texture */

@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 const items = [
-  ["Command Centre", Activity, "/"],
+  ["Command Centre", Activity, "/dashboard"],
   ["Ward Intelligence", Building2, "/ward-intelligence"],
   ["Alerts & Action", BellRing, "/alerts"],
   ["Analytics", BarChart3, "/analytics"],
