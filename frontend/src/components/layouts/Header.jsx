@@ -1,8 +1,10 @@
-import { ChevronDown, MapPin } from "lucide-react";
+import { ChevronDown, MapPin, Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTheme } from "../../context/ThemeContext.jsx";
 
 export default function Header() {
   const [time, setTime] = useState(new Date());
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -36,6 +38,9 @@ export default function Header() {
         <b>Kolkata Municipal Corporation</b>
       </div>
       <div className="command-tools">
+        <button className="theme-toggle" onClick={toggleTheme} aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"} title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
+          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+        </button>
         <button>
           <MapPin size={14} /> Kolkata <ChevronDown size={13} />
         </button>

@@ -8,8 +8,9 @@ import Dashboard from './pages/dashboard.jsx'
 import Alerts from './pages/Alerts.jsx'
 import Analytics from './pages/Analytics.jsx'
 import WardIntelligence from './pages/WardIntelligence.jsx'
+import AagaamIntro from './components/intro/AagaamIntro.jsx'
 
-export default function App() {
+function CommandCentre() {
   const cursorRef = useRef(null)
 
   useEffect(() => {
@@ -60,13 +61,22 @@ export default function App() {
       />
       <DashboardLayout>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/ward-intelligence" element={<WardIntelligence />} />
           <Route path="/alerts" element={<Alerts />} />
           <Route path="/analytics" element={<Analytics />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </DashboardLayout>
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<AagaamIntro />} />
+      <Route path="/*" element={<CommandCentre />} />
+    </Routes>
   )
 }

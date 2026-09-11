@@ -97,7 +97,7 @@ export default function WardIntelligence() {
                 <stop offset="1" stopColor="#e76f22" stopOpacity="0" />
               </linearGradient>
             </defs>
-            <CartesianGrid stroke="#e7ecef" vertical={false} />
+            <CartesianGrid stroke="var(--chart-grid)" vertical={false} />
             <XAxis dataKey="month" />
             <YAxis />
             <Tooltip />

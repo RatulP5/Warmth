@@ -15,17 +15,17 @@
 .analytics-filter select,
 .filter-row button {
   white-space: nowrap;
-  border: 1px solid #d3dfe1;
+  border: 1px solid var(--border-card);
   border-radius: 4px;
   padding: 8px 10px;
-  background: #fff;
-  color: #4d646b;
+  background: var(--bg-card);
+  color: var(--text-primary);
   font-size: 11px;
 }
 .filter-row button.filter-active {
-  border-color: #24434a;
-  background: #24434a;
-  color: white;
+  border-color: var(--accent-orange);
+  background: var(--accent-orange);
+  color: var(--text-on-accent);
 }
 .analytics-grid,
 .alert-grid {
@@ -45,7 +45,7 @@
 .asset-grid > div {
   padding: 13px;
   border-left: 3px solid #e76f22;
-  background: #f8fafa;
+  background: var(--surface-subtle);
 }
 .asset-grid span,
 .asset-grid b,
@@ -54,7 +54,7 @@
 }
 .asset-grid span,
 .asset-grid small {
-  color: #64767e;
+  color: var(--text-muted);
   font-size: 10px;
 }
 .asset-grid b {
@@ -64,7 +64,7 @@
 .access-alert {
   margin: 17px 0 0;
   padding: 11px;
-  background: #fff4e8;
+  background: rgba(255, 85, 0, 0.12);
   color: #8e532b;
   font-size: 11px;
 }
@@ -88,10 +88,10 @@
 }
 .alerts-page .alert-card {
   padding: 18px;
-  border: 1px solid #dce4e6;
+  border: 1px solid var(--border-card);
   border-top: 4px solid;
   border-radius: 6px;
-  background: #fff;
+  background: var(--bg-card);
 }
 .alerts-page .alert-card.extreme {
   border-top-color: #c9423a;
@@ -120,35 +120,35 @@
 }
 .alerts-page .alert-card p {
   margin: 0 0 15px;
-  color: #5d717a;
+  color: var(--text-muted);
   font-size: 12px;
 }
 .alerts-page .alert-card > div > b {
-  color: #53666e;
+  color: var(--text-primary);
   font-size: 10px;
 }
 .alerts-page .alert-card ul {
   margin: 7px 0 14px;
   padding-left: 17px;
-  color: #60737b;
+  color: var(--text-muted);
   font-size: 11px;
   line-height: 1.6;
 }
 .alerts-page footer {
   display: flex;
   gap: 7px;
-  border-top: 1px solid #e7edef;
+  border-top: 1px solid var(--border-card);
   padding-top: 13px;
 }
 .alerts-page footer button {
   display: flex;
   align-items: center;
   gap: 4px;
-  border: 1px solid #cbd7da;
+  border: 1px solid var(--border-card);
   border-radius: 3px;
   padding: 7px;
-  background: #fff;
-  color: #344a53;
+  background: var(--surface-subtle);
+  color: var(--text-primary);
   font-size: 10px;
 }
 .alerts-page footer button.done {
@@ -158,8 +158,8 @@
 }
 .empty-state {
   padding: 40px;
-  background: white;
-  color: #63757d;
+  background: var(--bg-card);
+  color: var(--text-muted);
 }
 .intelligence-top {
   display: flex;
@@ -167,14 +167,14 @@
   justify-content: space-between;
   gap: 20px;
   margin-bottom: 16px;
-  border: 1px solid #dce4e6;
+  border: 1px solid var(--border-card);
   border-radius: 7px;
   padding: 18px;
-  background: #fff;
+  background: var(--bg-card);
 }
 .intelligence-top p {
   margin: 0;
-  color: #8499a3;
+  color: var(--text-muted);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -182,10 +182,11 @@
 .intelligence-top select {
   margin-top: 7px;
   min-width: 230px;
-  border: 1px solid #ccd8dc;
+  border: 1px solid var(--border-card);
   border-radius: 4px;
   padding: 8px;
-  background: white;
+  background: var(--surface-subtle);
+  color: var(--text-primary);
 }
 .risk-status {
   text-align: center;
@@ -205,7 +206,7 @@
 }
 .risk-status small,
 .confidence small {
-  color: #6a7c84;
+  color: var(--text-muted);
   font-size: 10px;
 }
 .confidence {
@@ -214,7 +215,7 @@
   gap: 4px;
 }
 .confidence span {
-  color: #71818a;
+  color: var(--text-muted);
   font-size: 9px;
   font-weight: 800;
 }
@@ -223,7 +224,7 @@
 }
 .confidence i {
   height: 5px;
-  background: #e6ecec;
+  background: var(--surface-muted);
 }
 .confidence em {
   display: block;
@@ -237,10 +238,10 @@
   gap: 14px;
 }
 .metric-block {
-  border: 1px solid #dce4e6;
+  border: 1px solid var(--border-card);
   border-radius: 6px;
   padding: 16px;
-  background: #fff;
+  background: var(--bg-card);
 }
 .metric-block h3 {
   margin: 0 0 10px;
@@ -250,12 +251,12 @@
   display: flex;
   justify-content: space-between;
   gap: 6px;
-  border-bottom: 1px solid #edf1f2;
+  border-bottom: 1px solid var(--border-card);
   padding: 8px 0;
   font-size: 10px;
 }
 .metric-block span {
-  color: #6c7d85;
+  color: var(--text-muted);
 }
 @media (max-width: 760px) {
   .analytics-grid,
