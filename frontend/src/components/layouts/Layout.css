@@ -1,0 +1,209 @@
+.ops-shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+}
+
+.ops-main {
+  width: min(100%, 1600px);
+  flex: 1;
+  margin: 0 auto;
+  padding: 0 32px 40px;
+}
+
+/* Header / Command Bar */
+.command-bar {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--border-card);
+  background: transparent;
+  margin:0 0 1rem 0;
+}
+
+.command-context{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.command-context span {
+  color: var(--accent-orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.command-context b {
+  margin-top: 3px;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: var(--font-display);
+}
+
+.command-tools {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-muted);
+}
+
+.command-tools button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+  font-size: 12px;
+  transition: border-color 0.3s ease;
+}
+
+.command-tools button:hover {
+  border-color: var(--border-card-hover);
+}
+
+.command-tools time {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+/* Sidebar Rail */
+.command-rail {
+  position: sticky;
+  top: 0;
+  display: flex;
+  width: 68px;
+  height: 100vh;
+  flex: 0 0 68px;
+  flex-direction: column;
+  border-right: 1px solid var(--border-card);
+  background: rgba(12, 15, 20, 0.95);
+  backdrop-filter: blur(20px);
+  color: var(--text-primary);
+  z-index: 1000;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.command-rail.rail-expanded {
+  width: 220px;
+  flex: 0 0 220px;
+}
+
+.rail-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 70px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--border-card);
+}
+
+.rail-brand > span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--accent-orange);
+  color: #fff;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.rail-brand b {
+  display: none;
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.command-rail.rail-expanded .rail-brand b {
+  display: block;
+}
+
+.rail-brand small {
+  display: block;
+  color: var(--accent-orange);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.command-rail nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 12px;
+}
+
+.command-rail nav a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 10px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.command-rail nav a:hover,
+.command-rail nav a.rail-active {
+  background: rgba(255, 85, 0, 0.12);
+  color: #ffffff;
+  box-shadow: inset 3px 0 var(--accent-orange);
+}
+
+.command-rail nav span {
+  display: none;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.command-rail.rail-expanded nav span {
+  display: inline;
+}
+
+.rail-toggle {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin: auto auto 16px;
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.rail-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border-card);
+  color: #00ffaa;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.rail-status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00ffaa;
+  box-shadow: 0 0 10px #00ffaa;
+}
+
+@media (max-width: 720px) {
+  .command-rail { display: none; }
+  .ops-main { padding: 0 16px 28px; }
+}
