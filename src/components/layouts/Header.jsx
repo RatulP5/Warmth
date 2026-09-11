@@ -1,5 +1,34 @@
-import { Bell, ChevronDown, MapPin, UserCircle } from "lucide-react";
+import { ChevronDown, MapPin } from "lucide-react";
+import { useState, useEffect } from "react";
+
 export default function Header() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    // Stop the timer when component is removed
+    return () => clearInterval(timer);
+  }, []);
+
+  const formattedDate = time
+    .toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "numeric",
+      year: "numeric",
+      timeZone: "Asia/Kolkata",
+    })
+    .toUpperCase();
+
+  const formattedTime = time.toLocaleTimeString("en-IN", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+    timeZone: "Asia/Kolkata",
+  });
   return (
     <header className="command-bar">
       <div className="command-context">
@@ -10,15 +39,8 @@ export default function Header() {
         <button>
           <MapPin size={14} /> Kolkata <ChevronDown size={13} />
         </button>
-        <time>20 MAY 2025 · 14:32 IST</time>
-        <span className="live-state">
-          <i /> LIVE
-        </span>
-        <button className="notification" aria-label="Three active alerts">
-          <Bell size={17} />
-          <em>3</em>
-        </button>
-        <UserCircle size={23} />
+        <time>{formattedDate}</time>
+        <time>{formattedTime} IST</time>
       </div>
     </header>
   );

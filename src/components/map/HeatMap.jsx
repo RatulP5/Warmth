@@ -1,5 +1,4 @@
 import {
-  AttributionControl,
   GeoJSON,
   MapContainer,
   TileLayer,
@@ -143,10 +142,9 @@ export default function HeatMap({
         className="kolkata-leaflet-map"
       >
         <TileLayer
-          attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <AttributionControl prefix={false} />
+        attribution="&copy; OpenStreetMap contributors"
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
         <GeoJSON
           key={`${layer}-${day}-${selectedWard?.id || "none"}`}
           data={wardBoundaries}
