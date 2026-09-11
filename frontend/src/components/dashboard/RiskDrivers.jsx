@@ -1,0 +1,33 @@
+export default function RiskDrivers({ ward }) {
+  const factors = [
+    ["High temperature", 89],
+    ["High humidity", ward.humidity],
+    ["Low wind", 72],
+    ["Built-up density", ward.builtUp],
+    ["Low vegetation", 100 - ward.vegetation],
+    ["Outdoor exposure", ward.outdoorExposure],
+    ["Vulnerable population", ward.vulnerability],
+  ];
+  return (
+    <section className="section-card">
+      <div className="section-heading">
+        <div>
+          <p>EXPLAINABILITY</p>
+          <h2>Why this risk?</h2>
+        </div>
+        <span>Ward {ward.id}</span>
+      </div>
+      <div className="factor-list">
+        {factors.map(([name, value]) => (
+          <div key={name}>
+            <span>{name}</span>
+            <div>
+              <i style={{ width: `${value}%` }} />
+            </div>
+            <b>{value}</b>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
