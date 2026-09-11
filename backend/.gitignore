@@ -1,2 +1,4 @@
 node_modules/
 .env
+uploads/
+GOVERNMENT_OFFICIAL_ALERT_ARCHITECTURE.md

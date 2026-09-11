@@ -50,4 +50,4 @@ function runPipeline() {
 }
 
 
-cron.schedule("0 * * * *", runPipeline);
+cron.schedule("*0 * * * *", runPipeline);
