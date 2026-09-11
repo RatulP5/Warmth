@@ -10,7 +10,8 @@ def get_building_coverage_ratio(ward_polygon_4326, ward_utm_geom) -> dict:
         built_area_sqm = float(buildings_utm.geometry.area.sum())
         building_count = len(buildings)
         bcr = min(built_area_sqm / total_area_sqm, 1.0)
-    except Exception:
+    except Exception as e:
+        print(f"    [BCR WARNING] OSM building query failed: {e}")
         built_area_sqm, building_count, bcr = 0.0, 0, 0.0
 
     return {

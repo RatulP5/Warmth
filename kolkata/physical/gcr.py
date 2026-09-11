@@ -25,8 +25,10 @@ def get_green_coverage_ratio(ward_4326_gdf: gpd.GeoDataFrame) -> dict:
             return {"gcr": 0.0, "mean_ndvi": 0.0}
 
         item = items[0]
-        red = rioxarray.open_rasterio(item.assets["B04"].href).rio.clip(ward_4326_gdf.geometry, ward_4326_gdf.crs)
-        nir = rioxarray.open_rasterio(item.assets["B08"].href).rio.clip(ward_4326_gdf.geometry, ward_4326_gdf.crs)
+        geoms = list(ward_4326_gdf.geometry.values)
+        crs = ward_4326_gdf.crs
+        red = rioxarray.open_rasterio(item.assets["B04"].href).rio.clip(geoms, crs)
+        nir = rioxarray.open_rasterio(item.assets["B08"].href).rio.clip(geoms, crs)
 
         red_f = red.astype("float32")
         nir_f = nir.astype("float32")
@@ -41,7 +43,8 @@ def get_green_coverage_ratio(ward_4326_gdf: gpd.GeoDataFrame) -> dict:
         green_pixels = (valid > 0.25).sum()
         gcr = float(green_pixels / len(valid))
         mean_ndvi = float(np.mean(valid))
-    except Exception:
+    except Exception as e:
+        print(f"    [GCR WARNING] Satellite NDVI query failed: {e}")
         gcr, mean_ndvi = 0.0, 0.0
 
     return {
