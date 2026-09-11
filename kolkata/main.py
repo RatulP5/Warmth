@@ -28,24 +28,35 @@ class WardExtractor:
     def _load_data(self):
         # 1. Load GeoJSON
         gdf = gpd.read_file(self.geojson_path)
-        
-        # Look for case-insensitive match for common ward column names
-        possible_cols = [c for c in gdf.columns if "ward" in c.lower() or c.lower() in ["name", "id", "admin_level_8"]]
-        if not possible_cols:
-            raise KeyError(f"Could not identify a ward column. Available columns: {gdf.columns.tolist()}")
-            
-        target_col = possible_cols[0]
+
+        # Prefer explicit WARD column; fall back to other candidate columns
+        if "WARD" in gdf.columns:
+            target_col = "WARD"
+        else:
+            possible_cols = [c for c in gdf.columns if "ward" in c.lower() or c.lower() in ["name", "id", "admin_level_8"]]
+            if not possible_cols:
+                raise KeyError(f"Could not identify a ward column. Available columns: {gdf.columns.tolist()}")
+            target_col = possible_cols[0]
         print(f"Using GeoJSON column '{target_col}' for ward numbers.")
 
-        # Extract numeric integer ID safely
+        # Extract numeric integer ID safely (strip whitespace/newlines first)
         gdf["clean_ward"] = (
             gdf[target_col]
             .astype(str)
+            .str.strip()
             .str.extract(r"(\d+)", expand=False)
             .astype(int)
         )
-        
-        self.gdf_4326 = gdf.to_crs(epsg=config.WGS84_EPSG)
+
+        # Fix swapped lat/lon: this GeoJSON stores coordinates as (lat, lon)
+        # instead of the GeoJSON standard (lon, lat), so we swap X<->Y.
+        from shapely.ops import transform as shp_transform
+        def swap_xy(geom):
+            return shp_transform(lambda x, y, z=None: (y, x) if z is None else (y, x, z), geom)
+        gdf["geometry"] = gdf["geometry"].apply(swap_xy)
+        gdf = gdf.set_geometry("geometry").set_crs(epsg=config.WGS84_EPSG, allow_override=True)
+
+        self.gdf_4326 = gdf  # already in 4326 after swap
         self.gdf_utm = gdf.to_crs(epsg=config.KOLKATA_UTM_EPSG)
 
         # 2. Load Census PCA

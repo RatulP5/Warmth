@@ -20,7 +20,8 @@ def get_impervious_surface_fraction(ward_polygon_4326, ward_utm_geom, built_area
         road_area_sqm = float((roads_utm.geometry.length * road_widths).sum())
         total_paved_sqm = min(built_area_sqm + road_area_sqm, total_area_sqm)
         isf = min(total_paved_sqm / total_area_sqm, 1.0)
-    except Exception:
+    except Exception as e:
+        print(f"    [ISF WARNING] OSM road query failed: {e}")
         road_area_sqm, isf = 0.0, min(built_area_sqm / total_area_sqm, 1.0)
 
     return {

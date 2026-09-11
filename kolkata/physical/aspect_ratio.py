@@ -13,7 +13,8 @@ def get_canyon_aspect_ratio(ward_polygon_4326) -> dict:
         else:
             h = pd.Series([8.0] * len(buildings))
         avg_height = float(h.fillna(8.0).mean())
-    except Exception:
+    except Exception as e:
+        print(f"    [ASPECT WARNING] OSM building height query failed: {e}")
         avg_height = 8.0
 
     # 2. Width estimation
@@ -26,7 +27,8 @@ def get_canyon_aspect_ratio(ward_polygon_4326) -> dict:
         else:
             w = pd.Series([6.0] * len(roads))
         avg_width = float(w.fillna(6.0).mean())
-    except Exception:
+    except Exception as e:
+        print(f"    [ASPECT WARNING] OSM road width query failed: {e}")
         avg_width = 6.0
 
     hw_ratio = round(avg_height / max(avg_width, 1.0), 3)
