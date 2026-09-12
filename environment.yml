@@ -1,0 +1,17 @@
+name: heatwave-ml
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - geopandas
+  - pandas
+  - numpy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - pyarrow
+  - joblib
+  - pip
+  - pip:
+      - -e .

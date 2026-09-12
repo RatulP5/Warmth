@@ -1,0 +1,34 @@
+.conda/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# Generated artifacts and large datasets
+*.csv
+*.parquet
+*.ckpt
+*.pt
+*.pth
+*.xlsx
+lightning_logs/
+reports/figures/
+outputs/
+
+# Local credentials and Earth Engine service-account keys
+.secrets/
+credentials/
+sih-heatwave-*.json
+*.pem
+*.key
+
+# Local run logs
+*.log
+*.txt
+
+# Local secrets and editor state
+.env
+.vscode/*.local.json
