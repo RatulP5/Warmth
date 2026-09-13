@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import "./Dashboard.css";
 import { gsap } from "gsap";
 
-import { wards } from "../data/wards.js";
+import {getDashboardWards} from "../services/dashboardWardService.js";
 
 import RiskSummary from "../components/dashboard/RiskSummary.jsx";
 import Forecast from "../components/dashboard/Forecast.jsx";
 import DashboardHeading from "../components/dashboard/DashboardHeading.jsx";
+import {getWardEnvironmentalFeatures} from "../services/weatherService.js";
 
 import HeatMap, {
   MapLayerSelector,
@@ -16,9 +17,15 @@ import HeatMap, {
 import WardPanel from "../components/ward/WardPanel.jsx";
 
 export default function Dashboard() {
+  console.log("Hello");
+  const [wards, setWards] = useState([]);
   const [ward, setWard] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [layer, setLayer] = useState("riskScore");
   const [day, setDay] = useState(0);
+  const [wardWeather,setWardWeather]=useState(null);
+  const [weatherLoading,setWeatherLoading]=useState(false);
 
   const pageRef = useRef(null);
   const firstLayer = useRef(true);
@@ -64,8 +71,12 @@ export default function Dashboard() {
       return;
     }
 
+    const target = document.querySelector(".leaflet-overlay-pane");
+
+    if (!target) return;
+
     gsap.fromTo(
-      ".leaflet-overlay-pane",
+      target,
       {
         opacity: 0.35,
       },
@@ -76,6 +87,52 @@ export default function Dashboard() {
       }
     );
   }, [layer]);
+
+  //load the wards for the dashboard
+  useEffect(() => {
+    async function loadWards() {
+      try {
+        const data = await getDashboardWards();
+
+        console.log("DASHBOARD WARDS FROM SUPABASE:", data);
+
+        setWards(data);
+      } catch (err) {
+        console.error("Failed to load dashboard wards:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadWards();
+  }, []);
+
+  //Fetch weather whenever a ward is selected
+  useEffect(()=>{
+    if (!ward) {
+      return;
+    }
+
+  async function loadWardWeather() {
+    try {
+      setWeatherLoading(true);
+
+      const data = await getWardEnvironmentalFeatures(ward.id);
+
+      console.log("SELECTED WARD WEATHER:", data);
+
+      setWardWeather(data);
+    } catch (error) {
+      console.error("Failed to load ward weather:", error);
+      setWardWeather(null);
+    } finally {
+      setWeatherLoading(false);
+    }
+  }
+
+  loadWardWeather();
+  },[ward]);
 
   return (
     <div className="climate-page" ref={pageRef}>
@@ -89,15 +146,21 @@ export default function Dashboard() {
             HEAT MAP
             ================================================= */}
         <div className="map-frame">
-          <HeatMap
-            wards={wards}
-            layer={layer}
-            selectedWard={ward}
-            onWardSelect={setWard}
-            day={day}
-          />
 
-          {/* Map layer selector */}
+          {loading && <p>Loading ward intelligence...</p>}
+
+          {error && <p>Failed to load wards: {error}</p>}
+
+          {!loading && !error && wards.length > 0 && (
+            <HeatMap
+              wards={wards}
+              layer={layer}
+              selectedWard={ward}
+              onWardSelect={setWard}
+              day={day}
+            />
+          )}
+
           <div className="map-overlay overlay-top">
             <MapLayerSelector
               layer={layer}
@@ -105,22 +168,22 @@ export default function Dashboard() {
             />
           </div>
 
-          {/* Map legend + summary */}
           <div className="map-overlay overlay-bottom">
             <MapLegend layer={layer} />
             <RiskSummary />
           </div>
 
-          {/* Map instruction */}
           <div className="map-instruction">
             Select a ward for operational intelligence
           </div>
 
-          {/* Ward intelligence panel */}
           <WardPanel
             ward={ward}
+            weather={wardWeather}
+            weatherLoading={weatherLoading}
             onClose={() => setWard(null)}
           />
+
         </div>
       </section>
 

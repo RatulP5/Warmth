@@ -2,9 +2,10 @@ import { useEffect, useRef } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Lenis from 'lenis'
 import gsap from 'gsap'
+import SupabaseTest from "./pages/SupabaseTest.jsx";
 
 import DashboardLayout from './components/layouts/DashboardLayout.jsx'
-import Dashboard from './pages/dashboard.jsx'
+import Dashboard from './pages/Dashboard.jsx'
 import Alerts from './pages/Alerts.jsx'
 import Analytics from './pages/Analytics.jsx'
 import WardIntelligence from './pages/WardIntelligence.jsx'
@@ -76,6 +77,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<AagaamIntro />} />
+      <Route path="/supabase-test" element={<SupabaseTest />} />
       <Route path="/*" element={<CommandCentre />} />
     </Routes>
   )

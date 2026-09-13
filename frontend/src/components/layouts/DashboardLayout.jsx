@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar.jsx";
 import "./Layout.css";
 //import Sidebar from "./Sidebar.jsx";
 export default function DashboardLayout({ children }) {
+  //console.log("Hello");
   return (
     <div className="ops-shell">
       <Sidebar />
