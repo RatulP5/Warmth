@@ -3,7 +3,7 @@ import "./WardPanel.css";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { riskColors } from "../../data/wards.js";
-export default function WardPanel({ ward, onClose }) {
+export default function WardPanel({ ward, weather, weatherLoading, onClose }) {
   const panelRef = useRef();
   useLayoutEffect(() => {
     if (!ward || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
@@ -22,10 +22,34 @@ export default function WardPanel({ ward, onClose }) {
   if (!ward) return null;
   const metrics = [
     ["Thermal stress", `${ward.riskScore}/100`],
-    ["WBGT", `${ward.wbgt} deg C`],
-    ["UTCI", `${ward.utci} deg C`],
-    ["Heat index", `${ward.heatIndex} deg C`],
-    ["Population exposed", ward.population],
+    [
+    "Temperature",
+    weatherLoading
+      ? "Loading..."
+      : weather?.temperature != null
+        ? `${weather.temperature}°C`
+        : "—",
+  ],
+  [
+    "Humidity",
+    weatherLoading
+      ? "Loading..."
+      : weather?.humidity != null
+        ? `${weather.humidity}%`
+        : "—",
+  ],
+  [
+    "Wind speed",
+    weatherLoading
+      ? "Loading..."
+      : weather?.windSpeed != null
+        ? `${weather.windSpeed} km/h`
+        : "—",
+  ],
+  /* ["WBGT", `${ward.wbgt} deg C`],
+  ["UTCI", `${ward.utci} deg C`],
+  ["Heat index", `${ward.heatIndex} deg C`], */
+  ["Population exposed", ward.population],
     ["Peak-risk", "Tomorrow"],
   ];
   return (
